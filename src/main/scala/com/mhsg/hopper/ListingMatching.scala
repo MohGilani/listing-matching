@@ -20,7 +20,6 @@ object ListingMatching {
     val rawData = Read.readInData(spark, sampleDataFilePath, homeAwayCrawledDataFilePath, bookingCrawledDataFilePath)
     val processedData = Process.processData(spark, rawData)
     processedData.show(1000, false)
-    println(processedData.count())
 
     spark.close()
   }

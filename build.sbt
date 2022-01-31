@@ -7,6 +7,10 @@ ThisBuild / resolvers ++= Seq(
 )
 
 val sparkVersion = "2.4.8"
+val testDependencies = Seq(
+  "org.scalatest" %% "scalatest" % "3.2.3" % Test,
+  "org.scalamock" %% "scalamock" % "4.4.0" % Test
+)
 val mainDependencies = Seq(
   "org.apache.spark"  %%  "spark-core"    % sparkVersion,
   "org.apache.spark"  %%  "spark-sql"     % sparkVersion,
@@ -18,6 +22,7 @@ val mainDependencies = Seq(
 
 lazy val root = (project in file("."))
   .settings(
+    libraryDependencies ++= testDependencies,
     libraryDependencies ++= mainDependencies,
     mainClass / run := Some("com.mhsg.hopper.ListingMatching")
   )
